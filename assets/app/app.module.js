@@ -11,13 +11,15 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require("./app.component");
+var message_component_1 = require("./messages/message.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                message_component_1.MessageComponent
             ],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
             bootstrap: [app_component_1.AppComponent]
