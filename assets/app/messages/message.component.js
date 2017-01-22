@@ -12,11 +12,19 @@ var message_model_1 = require("./message.model");
 var MessageComponent = (function () {
     function MessageComponent() {
         this.message = message_model_1.Message;
+        this.editClicked = new core_1.EventEmitter();
     }
+    MessageComponent.prototype.onEdit = function () {
+        this.editClicked.emit('A new valie');
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], MessageComponent.prototype, "message", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MessageComponent.prototype, "editClicked", void 0);
     MessageComponent = __decorate([
         core_1.Component({
             selector: 'app-message',
