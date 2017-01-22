@@ -12,6 +12,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require("./app.component");
 var message_component_1 = require("./messages/message.component");
+var message_list_component_1 = require("./messages/message-list.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,7 +20,8 @@ var AppModule = (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                message_component_1.MessageComponent
+                message_component_1.MessageComponent,
+                message_list_component_1.MessageListComponent
             ],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
             bootstrap: [app_component_1.AppComponent]

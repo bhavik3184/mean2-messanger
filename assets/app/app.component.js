@@ -8,12 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var message_model_1 = require('../app/messages/message.model');
 var AppComponent = (function () {
     function AppComponent() {
-        this.messages = [
-            new message_model_1.Message('A Message', 'SB'),
-            new message_model_1.Message('Another Message', 'SB')];
     }
     AppComponent = __decorate([
         core_1.Component({
