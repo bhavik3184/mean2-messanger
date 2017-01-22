@@ -13,6 +13,7 @@ var MessageComponent = (function () {
     function MessageComponent() {
         this.message = message_model_1.Message;
         this.editClicked = new core_1.EventEmitter();
+        this.color = "red";
     }
     MessageComponent.prototype.onEdit = function () {
         this.editClicked.emit('A new valie');
