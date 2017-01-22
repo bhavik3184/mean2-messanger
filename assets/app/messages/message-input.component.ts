@@ -1,3 +1,12 @@
-/**
- * Created by bhavik shah on 1/22/2017.
- */
+import {Component} from '@angular/core';
+@Component({
+	selector: 'app-message-input',
+	template: require('./message-input.component.html')
+})
+
+export class MessageInputComponent {
+	onSave(value:string) {
+		console.log(value);
+	}
+
+}
