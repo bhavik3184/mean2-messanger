@@ -11,7 +11,9 @@ var core_1 = require('@angular/core');
 var message_model_1 = require('../app/messages/message.model');
 var AppComponent = (function () {
     function AppComponent() {
-        this.message = new message_model_1.Message('A Message', 'SB');
+        this.messages = [
+            new message_model_1.Message('A Message', 'SB'),
+            new message_model_1.Message('Another Message', 'SB')];
     }
     AppComponent = __decorate([
         core_1.Component({

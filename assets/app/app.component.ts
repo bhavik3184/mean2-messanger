@@ -6,5 +6,7 @@ import { Message } from '../app/messages/message.model'
 	template: require('./app.component.html')
 })
 export class AppComponent {
-	message = new Message('A Message', 'SB');
+	messages:Message[] = [
+		new Message('A Message', 'SB'),
+		new Message('Another Message', 'SB')];
 }
