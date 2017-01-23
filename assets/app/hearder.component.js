@@ -14,7 +14,7 @@ var HeaderComponent = (function () {
     HeaderComponent = __decorate([
         core_1.Component({
             selector: 'app-header',
-            template: "\n\t\t\t\t<header class=\"row\">\n\t\t\t\t    <nav class=\"col-md-8 col-md-offset-8\">\n\t\t\t\t        <ul class=\"nav nav-pills\">\n\t\t\t\t            <li><a>Messanger</a></li>\n\t\t\t\t            <li><a>Authentication</a></li>\n\t\t\t\t        </ul>\n\t\t\t\t    </nav>\n\t\t\t\t</header>\n\t"
+            template: "\n\t\t\t\t<header class=\"row\">\n\t\t\t\t    <nav class=\"col-md-8 col-md-offset-8\">\n\t\t\t\t        <ul class=\"nav nav-pills\">\n\t\t\t\t            <li routerLinkActive=\"active\"><a [routerLink]=\"['/messages']\">Messanger</a></li>\n\t\t\t\t            <li routerLinkActive=\"active\"><a [routerLink]=\"['/auth']\">Authentication</a></li>\n\t\t\t\t        </ul>\n\t\t\t\t    </nav>\n\t\t\t\t</header>\n\t"
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);
