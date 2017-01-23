@@ -5,11 +5,11 @@ var MessageService = (function () {
     MessageService.prototype.getMessages = function () {
         return this.messages;
     };
-    MessageService.prototype.addMessages = function (message) {
+    MessageService.prototype.addMessage = function (message) {
         this.messages.push(message);
         console.log(this.messages);
     };
-    MessageService.prototype.deleteMessages = function (message) {
+    MessageService.prototype.deleteMessage = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);
     };
     return MessageService;

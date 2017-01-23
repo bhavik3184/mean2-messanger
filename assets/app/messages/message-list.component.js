@@ -9,20 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var message_model_1 = require("./message.model");
+var message_service_1 = require("./message.service");
 var MessageListComponent = (function () {
-    function MessageListComponent() {
+    function MessageListComponent(messageService) {
+        this.messageService = messageService;
         this.messages = [
             new message_model_1.Message('A Message', 'SB'),
             new message_model_1.Message('Another Message', 'SB'),
             new message_model_1.Message('1 more Message', 'SB')
         ];
     }
+    MessageListComponent.prototype.ngOnInit = function () {
+        this.messages = this.messageService.getMessages();
+    };
     MessageListComponent = __decorate([
         core_1.Component({
             selector: 'app-message-list',
-            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n            <app-message [message]=\"message\" (editClicked)=\"message.content=$event\"\n                         *ngFor=\"let message of messages\"></app-message>\n        </div>\n\t"
+            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n            <app-message [message]=\"message\" (editClicked)=\"message.content=$event\"\n                         *ngFor=\"let message of messages\"></app-message>\n        </div>\n\t",
+            providers: [message_service_1.MessageService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [message_service_1.MessageService])
     ], MessageListComponent);
     return MessageListComponent;
 })();

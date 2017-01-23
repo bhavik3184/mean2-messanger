@@ -6,12 +6,12 @@ export class MessageService {
 		return this.messages;
 	}
 
-	addMessages(message:Message) {
+	addMessage(message:Message) {
 		this.messages.push(message);
 		console.log(this.messages);
 	}
 
-	deleteMessages(message:Message) {
+	deleteMessage(message:Message) {
 		this.messages.splice(this.messages.indexOf(message), 1);
 	}
 }

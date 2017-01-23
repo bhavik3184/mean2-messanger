@@ -16,7 +16,7 @@ var MessageInputComponent = (function () {
     }
     MessageInputComponent.prototype.onSave = function (value) {
         var message = new message_model_1.Message(value, 'SB');
-        this.messageService.addMessages(message);
+        this.messageService.addMessage(message);
     };
     MessageInputComponent = __decorate([
         core_1.Component({

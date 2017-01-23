@@ -14,7 +14,7 @@ export class MessageInputComponent {
 
 	onSave(value:string) {
 		const message = new Message(value, 'SB');
-		this.messageService.addMessages(message);
+		this.messageService.addMessage(message);
 	}
 
 }
