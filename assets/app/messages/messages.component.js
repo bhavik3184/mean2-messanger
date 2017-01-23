@@ -14,7 +14,7 @@ var MessagesComponent = (function () {
     MessagesComponent = __decorate([
         core_1.Component({
             selector: 'app-messages',
-            template: "\n\t\t<div class=\"row\">\n\t        <app-message-input></app-message-input>\n\t    </div>\n\t    <br>\n\t    <div class=\"row\">\n\t        <app-message-list></app-message-list>\n\t    </div>\n\t\t"
+            template: "\n\t\t<div class=\"row\">\n\t        <app-message-input></app-message-input>\n\t    </div>\n\t    <hr>\n\t    <div class=\"row\">\n\t        <app-message-list></app-message-list>\n\t    </div>\n\t\t"
         }), 
         __metadata('design:paramtypes', [])
     ], MessagesComponent);

@@ -14,7 +14,7 @@ var AuthenticationComponent = (function () {
     AuthenticationComponent = __decorate([
         core_1.Component({
             selector: 'app-authentication',
-            template: "<h1>Authentication</h1>h1>"
+            template: "<h1>Authentication</h1>"
         }), 
         __metadata('design:paramtypes', [])
     ], AuthenticationComponent);
