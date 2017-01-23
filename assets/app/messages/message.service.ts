@@ -8,6 +8,7 @@ export class MessageService {
 
 	addMessages(message:Message) {
 		this.messages.push(message);
+		console.log(this.messages);
 	}
 
 	deleteMessages(message:Message) {

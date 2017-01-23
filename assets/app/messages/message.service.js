@@ -7,6 +7,7 @@ var MessageService = (function () {
     };
     MessageService.prototype.addMessages = function (message) {
         this.messages.push(message);
+        console.log(this.messages);
     };
     MessageService.prototype.deleteMessages = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);

@@ -8,18 +8,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var message_service_1 = require("./message.service");
+var message_model_1 = require("./message.model");
 var MessageInputComponent = (function () {
-    function MessageInputComponent() {
+    function MessageInputComponent(messageService) {
+        this.messageService = messageService;
     }
     MessageInputComponent.prototype.onSave = function (value) {
-        console.log(value);
+        var message = new message_model_1.Message(value, 'SB');
+        this.messageService.addMessages(message);
     };
     MessageInputComponent = __decorate([
         core_1.Component({
             selector: 'app-message-input',
-            template: require('./message-input.component.html')
+            template: require('./message-input.component.html'),
+            providers: [message_service_1.MessageService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [message_service_1.MessageService])
     ], MessageInputComponent);
     return MessageInputComponent;
 })();
