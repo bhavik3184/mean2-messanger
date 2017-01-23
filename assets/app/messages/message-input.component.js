@@ -21,8 +21,7 @@ var MessageInputComponent = (function () {
     MessageInputComponent = __decorate([
         core_1.Component({
             selector: 'app-message-input',
-            template: require('./message-input.component.html'),
-            providers: [message_service_1.MessageService]
+            template: require('./message-input.component.html')
         }), 
         __metadata('design:paramtypes', [message_service_1.MessageService])
     ], MessageInputComponent);

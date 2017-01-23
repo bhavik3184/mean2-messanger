@@ -10,14 +10,9 @@ import {MessageService} from "./message.service";
                          *ngFor="let message of messages"></app-message>
         </div>
 	`
-	, providers: [MessageService]
 })
 export class MessageListComponent implements OnInit {
-	messages:Message[] = [
-		new Message('A Message', 'SB'),
-		new Message('Another Message', 'SB'),
-		new Message('1 more Message', 'SB')
-	];
+	messages:Message[];
 
 	constructor(private messageService:MessageService) {
 	}
