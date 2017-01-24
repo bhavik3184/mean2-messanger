@@ -18,6 +18,9 @@ var messages_component_1 = require("./messages/messages.component");
 var authentication_component_1 = require("./auth/authentication.component");
 var hearder_component_1 = require("./hearder.component");
 var app_routing_1 = require("./app.routing");
+var logout_component_1 = require("./auth/logout.component");
+var signup_component_1 = require("./auth/signup.component");
+var signin_component_1 = require("./auth/signin.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +33,10 @@ var AppModule = (function () {
                 message_input_component_1.MessageInputComponent,
                 messages_component_1.MessagesComponent,
                 authentication_component_1.AuthenticationComponent,
-                hearder_component_1.HeaderComponent
+                hearder_component_1.HeaderComponent,
+                logout_component_1.LogoutComponent,
+                signup_component_1.SignupComponent,
+                signin_component_1.SigninComponent
             ],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing],
             bootstrap: [app_component_1.AppComponent]
