@@ -14,7 +14,7 @@ var SigninComponent = (function () {
     SigninComponent = __decorate([
         core_1.Component({
             selector: 'app-signin',
-            template: require('./signin.component.html')
+            template: require('./sigin.component.html')
         }), 
         __metadata('design:paramtypes', [])
     ], SigninComponent);

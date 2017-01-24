@@ -14,7 +14,7 @@ var AuthenticationComponent = (function () {
     AuthenticationComponent = __decorate([
         core_1.Component({
             selector: 'app-authentication',
-            template: "<h1>Authentication</h1>"
+            template: "\n\t\t<header class=\"row spacing\">\n\t\t    <nav class=\"col-md-8 col-md-offset-2\">\n\t\t        <ul class=\"nav nav-tabs\">\n\t\t            <li routerLinkActive=\"active\"><a [routerLink]=\"['signup']\">SignUp</a></li>\n\t\t            <li routerLinkActive=\"active\"><a [routerLink]=\"['sigin']\">SignIn</a></li>\n\t\t            <li routerLinkActive=\"active\"><a [routerLink]=\"['logout']\">Logout</a></li>\n\t\t        </ul>\n\t\t    </nav>\n\t\t</header>\n\t\t<div class=\"row spacing\">\n\t\t    <router-outlet></router-outlet>\n\t\t</div>\n\t"
         }), 
         __metadata('design:paramtypes', [])
     ], AuthenticationComponent);
