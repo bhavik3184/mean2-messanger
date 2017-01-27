@@ -38,7 +38,7 @@ var AppModule = (function () {
                 signup_component_1.SignupComponent,
                 signin_component_1.SigninComponent
             ],
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing, forms_1.ReactiveFormsModule],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
