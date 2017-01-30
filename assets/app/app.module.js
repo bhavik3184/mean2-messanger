@@ -21,6 +21,7 @@ var app_routing_1 = require("./app.routing");
 var logout_component_1 = require("./auth/logout.component");
 var signup_component_1 = require("./auth/signup.component");
 var signin_component_1 = require("./auth/signin.component");
+var http_1 = require("@angular/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,7 +39,7 @@ var AppModule = (function () {
                 signup_component_1.SignupComponent,
                 signin_component_1.SigninComponent
             ],
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing, forms_1.ReactiveFormsModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing, forms_1.ReactiveFormsModule, http_1.HttpModule],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
