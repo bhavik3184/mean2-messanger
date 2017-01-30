@@ -13,7 +13,6 @@ var message_service_1 = require("./message.service");
 var MessageComponent = (function () {
     function MessageComponent(messageService) {
         this.messageService = messageService;
-        this.message = message_model_1.Message;
         this.editClicked = new core_1.EventEmitter();
     }
     MessageComponent.prototype.onEdit = function () {
@@ -24,7 +23,7 @@ var MessageComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', message_model_1.Message)
     ], MessageComponent.prototype, "message", void 0);
     __decorate([
         core_1.Output(), 

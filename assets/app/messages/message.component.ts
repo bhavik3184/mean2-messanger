@@ -21,7 +21,7 @@ import {MessageService} from "./message.service";
     `]
 })
 export class MessageComponent {
-	@Input() message = Message
+	@Input() message:Message;
 	@Output() editClicked = new EventEmitter <string>();
 
 	constructor(private messageService:MessageService) {
