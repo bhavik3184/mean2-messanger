@@ -16,7 +16,8 @@ var MessageInputComponent = (function () {
     }
     MessageInputComponent.prototype.onSubmit = function (form) {
         var message = new message_model_1.Message(form.value.content, 'SB');
-        this.messageService.addMessage(message);
+        this.messageService.addMessage(message)
+            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         form.resetForm();
     };
     MessageInputComponent = __decorate([
