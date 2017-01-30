@@ -9,13 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var message_model_1 = require("./message.model");
+var message_service_1 = require("./message.service");
 var MessageComponent = (function () {
-    function MessageComponent() {
+    function MessageComponent(messageService) {
+        this.messageService = messageService;
         this.message = message_model_1.Message;
         this.editClicked = new core_1.EventEmitter();
     }
     MessageComponent.prototype.onEdit = function () {
         this.editClicked.emit('A new valie');
+    };
+    MessageComponent.prototype.onDelete = function () {
+        this.messageService.deleteMessage(this.message);
     };
     __decorate([
         core_1.Input(), 
@@ -31,7 +36,7 @@ var MessageComponent = (function () {
             template: require('./message.component.html'),
             styles: ["\n        .author{\n            display:inline-block;\n            font-style:italic;\n            font-size:12px;\n            width:80%;\n        }\n        .config{\n            display:inline-block;\n            text-align:right;\n            font-size:12px;\n            width:19%;\n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [message_service_1.MessageService])
     ], MessageComponent);
     return MessageComponent;
 })();

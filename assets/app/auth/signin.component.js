@@ -8,9 +8,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var SigninComponent = (function () {
     function SigninComponent() {
     }
+    SigninComponent.prototype.onSubmit = function () {
+        console.log(this.myForm);
+        this.myForm.reset();
+    };
+    SigninComponent.prototype.ngOnInit = function () {
+        this.myForm = new forms_1.FormGroup({
+            email: new forms_1.FormControl(null, forms_1.Validators.required),
+            password: new forms_1.FormControl(null, forms_1.Validators.required)
+        });
+    };
     SigninComponent = __decorate([
         core_1.Component({
             selector: 'app-signin',
