@@ -13,10 +13,9 @@ var message_service_1 = require("./message.service");
 var MessageComponent = (function () {
     function MessageComponent(messageService) {
         this.messageService = messageService;
-        this.editClicked = new core_1.EventEmitter();
     }
     MessageComponent.prototype.onEdit = function () {
-        this.editClicked.emit('A new valie');
+        this.messageService.editMessage(this.message);
     };
     MessageComponent.prototype.onDelete = function () {
         this.messageService.deleteMessage(this.message);
@@ -25,10 +24,6 @@ var MessageComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', message_model_1.Message)
     ], MessageComponent.prototype, "message", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], MessageComponent.prototype, "editClicked", void 0);
     MessageComponent = __decorate([
         core_1.Component({
             selector: 'app-message',

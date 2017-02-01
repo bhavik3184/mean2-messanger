@@ -16,6 +16,7 @@ var MessageService = (function () {
     function MessageService(http) {
         this.http = http;
         this.messages = [];
+        this.messageIsEdit = new core_1.EventEmitter();
     }
     MessageService.prototype.getMessages = function () {
         var _this = this;
@@ -39,6 +40,11 @@ var MessageService = (function () {
         return this.http.post('http://localhost:3000/message', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+    };
+    MessageService.prototype.editMessage = function (message) {
+        this.messageIsEdit.emit(message);
+    };
+    MessageService.prototype.updateMessage = function (message) {
     };
     MessageService.prototype.deleteMessage = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);

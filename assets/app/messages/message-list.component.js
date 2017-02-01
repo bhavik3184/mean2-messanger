@@ -23,7 +23,7 @@ var MessageListComponent = (function () {
     MessageListComponent = __decorate([
         core_1.Component({
             selector: 'app-message-list',
-            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n            <app-message [message]=\"message\" (editClicked)=\"message.content=$event\"\n                         *ngFor=\"let message of messages\"></app-message>\n        </div>\n\t"
+            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n            <app-message [message]=\"message\" *ngFor=\"let message of messages\"></app-message>\n        </div>\n\t"
         }), 
         __metadata('design:paramtypes', [message_service_1.MessageService])
     ], MessageListComponent);
