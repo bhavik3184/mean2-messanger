@@ -15,15 +15,16 @@ var MessageInputComponent = (function () {
         this.messageService = messageService;
     }
     MessageInputComponent.prototype.onSubmit = function (form) {
-        var message = new message_model_1.Message(form.value.content, 'SB');
         if (this.message) {
             //EDIT
             this.message.content = form.value.content;
-            //this.messageService.updateMessage(message);
+            this.messageService.updateMessage(this.message)
+                .subscribe(function (result) { return console.log(result); }, function (error) { return console.error(error); });
             this.message = null;
         }
         else {
             //CREATE
+            var message = new message_model_1.Message(form.value.content, 'SB');
             this.messageService.addMessage(message)
                 .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         }

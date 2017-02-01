@@ -26,7 +26,7 @@ var MessageService = (function () {
             var transformedMessages = [];
             for (var _i = 0; _i < messages.length; _i++) {
                 var message = messages[_i];
-                transformedMessages.push(new message_model_1.Message(message.content, 'dummy', message.id, null));
+                transformedMessages.push(new message_model_1.Message(message.content, 'dummy', message._id, null));
             }
             _this.messages = transformedMessages;
             return transformedMessages;
@@ -34,17 +34,27 @@ var MessageService = (function () {
             .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     MessageService.prototype.addMessage = function (message) {
-        this.messages.push(message);
+        var _this = this;
         var body = JSON.stringify(message);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.post('http://localhost:3000/message', body, { headers: headers })
-            .map(function (response) { return response.json(); })
+            .map(function (response) {
+            var result = response.json();
+            var message = new message_model_1.Message(result.obj.content, 'Dummy', result.obj._id, null);
+            _this.messages.push(message);
+            return message;
+        })
             .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     MessageService.prototype.editMessage = function (message) {
         this.messageIsEdit.emit(message);
     };
     MessageService.prototype.updateMessage = function (message) {
+        var body = JSON.stringify(message);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        return this.http.patch('http://localhost:3000/message/' + message.messageId, body, { headers: headers })
+            .map(function (response) { return response.json(); })
+            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     MessageService.prototype.deleteMessage = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);

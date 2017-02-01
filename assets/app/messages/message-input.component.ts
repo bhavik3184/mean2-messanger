@@ -15,15 +15,19 @@ export class MessageInputComponent implements OnInit {
 	}
 
 	onSubmit(form:NgForm) {
-		const message = new Message(form.value.content, 'SB');
 		if (this.message) {
 			//EDIT
-			this.message.content=form.value.content;
-			//this.messageService.updateMessage(message);
-			this.message=null;
+			this.message.content = form.value.content;
+			this.messageService.updateMessage(this.message)
+				.subscribe(
+					result => console.log(result)
+					, error=>console.error(error)
+				)
+			this.message = null;
 		}
 		else {
 			//CREATE
+			const message = new Message(form.value.content, 'SB');
 			this.messageService.addMessage(message)
 				.subscribe(
 					data => console.log(data)
@@ -35,7 +39,7 @@ export class MessageInputComponent implements OnInit {
 	}
 
 	onClear(form:NgForm) {
-		this.message=null;
+		this.message = null;
 		form.resetForm();
 	}
 
