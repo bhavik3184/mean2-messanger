@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var message_model_1 = require("./message.model");
 var http_1 = require("@angular/http");
 require("rxjs/Rx");
 var rxjs_1 = require("rxjs");
@@ -17,7 +18,19 @@ var MessageService = (function () {
         this.messages = [];
     }
     MessageService.prototype.getMessages = function () {
-        return this.messages;
+        var _this = this;
+        return this.http.get('http://localhost:3000/message')
+            .map(function (response) {
+            var messages = response.json().obj;
+            var transformedMessages = [];
+            for (var _i = 0; _i < messages.length; _i++) {
+                var message = messages[_i];
+                transformedMessages.push(new message_model_1.Message(message.content, 'dummy', message.id, null));
+            }
+            _this.messages = transformedMessages;
+            return transformedMessages;
+        })
+            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     MessageService.prototype.addMessage = function (message) {
         this.messages.push(message);

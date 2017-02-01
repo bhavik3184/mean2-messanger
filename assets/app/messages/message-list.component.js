@@ -14,7 +14,11 @@ var MessageListComponent = (function () {
         this.messageService = messageService;
     }
     MessageListComponent.prototype.ngOnInit = function () {
-        this.messages = this.messageService.getMessages();
+        var _this = this;
+        this.messageService.getMessages()
+            .subscribe(function (messages) {
+            _this.messages = messages;
+        });
     };
     MessageListComponent = __decorate([
         core_1.Component({
