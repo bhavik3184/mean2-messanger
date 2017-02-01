@@ -58,6 +58,9 @@ var MessageService = (function () {
     };
     MessageService.prototype.deleteMessage = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);
+        return this.http.delete('http://localhost:3000/message/' + message.messageId)
+            .map(function (response) { return response.json(); })
+            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     MessageService = __decorate([
         core_1.Injectable(), 

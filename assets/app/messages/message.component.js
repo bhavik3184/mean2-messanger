@@ -18,7 +18,8 @@ var MessageComponent = (function () {
         this.messageService.editMessage(this.message);
     };
     MessageComponent.prototype.onDelete = function () {
-        this.messageService.deleteMessage(this.message);
+        this.messageService.deleteMessage(this.message)
+            .subscribe(function (result) { return console.log(result); });
     };
     __decorate([
         core_1.Input(), 
