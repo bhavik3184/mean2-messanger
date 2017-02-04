@@ -4,6 +4,7 @@ var User = require('../models/user');
 var bcrypt = require('bcryptjs');
 
 router.post('/', function (req, res, next) {
+    console.log(req.body);
     var user = new User({
         firstName: req.body.firstName
         , lastName: req.body.lastName
@@ -13,15 +14,15 @@ router.post('/', function (req, res, next) {
     user.save(function (err, result) {
         if (err) {
             return res.status(500).json({
-                title: 'An error while creating user'
-                error: err
-            });
+                title: 'An error occurred while creating'
+                , obj: err
+            })
         }
         res.status(201).json({
-            message: 'User created'
+            message: 'User Created'
             , obj: result
-        })
-    })
+        });
+    });
 });
 
 module.exports = router;

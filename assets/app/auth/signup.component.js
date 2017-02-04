@@ -9,11 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var auth_service_1 = require("./auth.service");
+var user_model_1 = require("./user.model");
 var SignupComponent = (function () {
-    function SignupComponent() {
+    function SignupComponent(authService) {
+        this.authService = authService;
     }
     SignupComponent.prototype.onSubmit = function () {
-        console.log(this.myForm);
+        var user = new user_model_1.User(this.myForm.value.password, this.myForm.value.email, this.myForm.value.firstName, this.myForm.value.lastName);
+        this.authService.SignUp(user)
+            .subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         this.myForm.reset();
     };
     SignupComponent.prototype.ngOnInit = function () {
@@ -29,7 +34,7 @@ var SignupComponent = (function () {
             selector: 'app-signup',
             template: require('./signup.component.html')
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService])
     ], SignupComponent);
     return SignupComponent;
 })();
