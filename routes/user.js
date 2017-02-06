@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 
 router.post('/', function (req, res, next) {
     console.log(req.body);
@@ -25,5 +26,33 @@ router.post('/', function (req, res, next) {
     });
 });
 
+router.post('/signin', function (req, res, next) {
+    User.findOne({email: req.body.email}, function (err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured while singing in!'
+                , obj: err
+            });
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: 'Invalid credentials'
+                , error: {message: 'Invalid login credentials'}
+            });
+        }
+        if (!bcrypt.hashSync(req.body.email, user.password)) {
+            return res.status(401).json({
+                title: 'Invalid credentials'
+                , error: {message: 'Invalid login credentials'}
+            })
+        }
+        var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+        res.status(200).json({
+            message: 'Successfully signed in'
+            , token: token
+            , userId: user._id
+        });
+    });
+});
 
 module.exports = router;
