@@ -31,6 +31,12 @@ var AuthService = (function () {
             .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
     ;
+    AuthService.prototype.isLoggedIn = function () {
+        return (localStorage.getItem('token') == null);
+    };
+    AuthService.prototype.logOut = function () {
+        localStorage.clear();
+    };
     AuthService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

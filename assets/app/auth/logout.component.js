@@ -8,17 +8,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var auth_service_1 = require("./auth.service");
+var router_1 = require('@angular/router');
 var LogoutComponent = (function () {
-    function LogoutComponent() {
+    function LogoutComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
     LogoutComponent.prototype.onLogout = function () {
+        this.authService.logOut();
+        this.router.navigate(['auth', 'sigin']);
     };
     LogoutComponent = __decorate([
         core_1.Component({
             selector: 'app-logout',
             template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n\t\t    <button class=\"btn btn-danger\" (click)=\"onLogout()\">Logout</button>\n\t\t</div>\n\t"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], LogoutComponent);
     return LogoutComponent;
 })();

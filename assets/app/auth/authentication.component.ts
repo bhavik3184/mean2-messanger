@@ -17,4 +17,6 @@ import {Component} from '@angular/core';
 		</div>
 	`
 })
-export class AuthenticationComponent{}
+export class AuthenticationComponent{
+
+}

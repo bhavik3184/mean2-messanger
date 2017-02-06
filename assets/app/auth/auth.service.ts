@@ -28,4 +28,12 @@ export class AuthService {
 			.map((response:Response)=> response.json())
 			.catch((error:Response)=> Observable.throw(error.json()));
 	};
+
+	isLoggedIn() {
+		return (localStorage.getItem('token') == null)
+	}
+
+	logOut() {
+		localStorage.clear();
+	}
 }
