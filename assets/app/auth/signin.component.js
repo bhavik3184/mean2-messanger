@@ -9,11 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var auth_service_1 = require("./auth.service");
+var router_1 = require('@angular/router');
+var user_model_1 = require("./user.model");
 var SigninComponent = (function () {
-    function SigninComponent() {
+    function SigninComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
     SigninComponent.prototype.onSubmit = function () {
-        console.log(this.myForm);
+        var _this = this;
+        var user = new user_model_1.User(this.myForm.value.password, this.myForm.value.email);
+        this.authService.SignIn(user)
+            .subscribe(function (data) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data.userId);
+            _this.router.navigateByUrl('/');
+        }, function (error) { return console.error(error); });
         this.myForm.reset();
     };
     SigninComponent.prototype.ngOnInit = function () {
@@ -27,7 +39,7 @@ var SigninComponent = (function () {
             selector: 'app-signin',
             template: require('./sigin.component.html')
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], SigninComponent);
     return SigninComponent;
 })();
