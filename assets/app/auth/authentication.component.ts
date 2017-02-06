@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from "./auth.service";
 
 @Component({
 	selector: 'app-authentication'
@@ -7,8 +8,8 @@ import {Component} from '@angular/core';
 		    <nav class="col-md-8 col-md-offset-2">
 		        <ul class="nav nav-tabs">
 		            <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
-		            <li routerLinkActive="active"><a [routerLink]="['sigin']">SignIn</a></li>
-		            <li routerLinkActive="active"><a [routerLink]="['logout']">Logout</a></li>
+		            <li routerLinkActive="active"><a [routerLink]="['sigin']" *ngIf="!isLoggedIn()">SignIn</a></li>
+		            <li routerLinkActive="active"><a [routerLink]="['logout']" *ngIf="isLoggedIn()">Logout</a></li>
 		        </ul>
 		    </nav>
 		</header>
@@ -17,6 +18,11 @@ import {Component} from '@angular/core';
 		</div>
 	`
 })
-export class AuthenticationComponent{
+export class AuthenticationComponent {
+	constructor(private authService:AuthService) {
+	}
 
+	isLoggedIn(){
+		return this.authService.isLoggedIn();
+	}
 }

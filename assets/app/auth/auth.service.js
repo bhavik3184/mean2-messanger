@@ -32,7 +32,7 @@ var AuthService = (function () {
     };
     ;
     AuthService.prototype.isLoggedIn = function () {
-        return (localStorage.getItem('token') == null);
+        return localStorage.getItem('token') !== null;
     };
     AuthService.prototype.logOut = function () {
         localStorage.clear();
