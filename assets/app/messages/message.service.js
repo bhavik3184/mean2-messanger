@@ -37,7 +37,8 @@ var MessageService = (function () {
         var _this = this;
         var body = JSON.stringify(message);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/message', body, { headers: headers })
+        var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.post('http://localhost:3000/message' + token, body, { headers: headers })
             .map(function (response) {
             var result = response.json();
             var message = new message_model_1.Message(result.obj.content, 'Dummy', result.obj._id, null);
@@ -58,7 +59,8 @@ var MessageService = (function () {
     };
     MessageService.prototype.deleteMessage = function (message) {
         this.messages.splice(this.messages.indexOf(message), 1);
-        return this.http.delete('http://localhost:3000/message/' + message.messageId)
+        var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
             .map(function (response) { return response.json(); })
             .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
     };
