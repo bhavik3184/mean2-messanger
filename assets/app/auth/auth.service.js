@@ -11,24 +11,34 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require('rxjs/Rx');
 var rxjs_1 = require("rxjs");
+var error_service_1 = require("../error/error.service");
 var AuthService = (function () {
-    function AuthService(http) {
+    function AuthService(http, errorService) {
         this.http = http;
+        this.errorService = errorService;
     }
     AuthService.prototype.SignUp = function (user) {
+        var _this = this;
         var body = JSON.stringify(user);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.post('http://localhost:3000/user', body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     ;
     AuthService.prototype.SignIn = function (user) {
+        var _this = this;
         var body = JSON.stringify(user);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.post('http://localhost:3000/user/signin', body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     ;
     AuthService.prototype.isLoggedIn = function () {
@@ -39,7 +49,7 @@ var AuthService = (function () {
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, error_service_1.ErrorService])
     ], AuthService);
     return AuthService;
 })();

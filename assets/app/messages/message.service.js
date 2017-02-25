@@ -12,9 +12,11 @@ var http_1 = require("@angular/http");
 require("rxjs/Rx");
 var rxjs_1 = require("rxjs");
 var core_1 = require("@angular/core");
+var error_service_1 = require("../error/error.service");
 var MessageService = (function () {
-    function MessageService(http) {
+    function MessageService(http, errorService) {
         this.http = http;
+        this.errorService = errorService;
         this.messages = [];
         this.messageIsEdit = new core_1.EventEmitter();
     }
@@ -31,7 +33,10 @@ var MessageService = (function () {
             _this.messages = transformedMessages;
             return transformedMessages;
         })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     MessageService.prototype.addMessage = function (message) {
         var _this = this;
@@ -45,28 +50,39 @@ var MessageService = (function () {
             _this.messages.push(message);
             return message;
         })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     MessageService.prototype.editMessage = function (message) {
         this.messageIsEdit.emit(message);
     };
     MessageService.prototype.updateMessage = function (message) {
+        var _this = this;
         var body = JSON.stringify(message);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.patch('http://localhost:3000/message/' + message.messageId, body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     MessageService.prototype.deleteMessage = function (message) {
+        var _this = this;
         this.messages.splice(this.messages.indexOf(message), 1);
         var token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
             .map(function (response) { return response.json(); })
-            .catch(function (error) { return rxjs_1.Observable.throw(error.json()); });
+            .catch(function (error) {
+            _this.errorService.handleError(error.json());
+            return rxjs_1.Observable.throw(error.json());
+        });
     };
     MessageService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, error_service_1.ErrorService])
     ], MessageService);
     return MessageService;
 })();

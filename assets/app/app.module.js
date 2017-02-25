@@ -23,6 +23,8 @@ var signup_component_1 = require("./auth/signup.component");
 var signin_component_1 = require("./auth/signin.component");
 var http_1 = require("@angular/http");
 var auth_service_1 = require("./auth/auth.service");
+var error_component_1 = require("./error/error.component");
+var error_service_1 = require("./error/error.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,9 +40,10 @@ var AppModule = (function () {
                 hearder_component_1.HeaderComponent,
                 logout_component_1.LogoutComponent,
                 signup_component_1.SignupComponent,
-                signin_component_1.SigninComponent
+                signin_component_1.SigninComponent,
+                error_component_1.ErrorComponent
             ],
-            providers: [auth_service_1.AuthService],
+            providers: [auth_service_1.AuthService, error_service_1.ErrorService],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing, forms_1.ReactiveFormsModule, http_1.HttpModule],
             bootstrap: [app_component_1.AppComponent]
         }), 
