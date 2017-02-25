@@ -26,7 +26,7 @@ var MessageService = (function () {
             var transformedMessages = [];
             for (var _i = 0; _i < messages.length; _i++) {
                 var message = messages[_i];
-                transformedMessages.push(new message_model_1.Message(message.content, 'dummy', message._id, null));
+                transformedMessages.push(new message_model_1.Message(message.content, message.user.firstName, message._id, message.user._id));
             }
             _this.messages = transformedMessages;
             return transformedMessages;
@@ -41,7 +41,7 @@ var MessageService = (function () {
         return this.http.post('http://localhost:3000/message' + token, body, { headers: headers })
             .map(function (response) {
             var result = response.json();
-            var message = new message_model_1.Message(result.obj.content, 'Dummy', result.obj._id, null);
+            var message = new message_model_1.Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
             _this.messages.push(message);
             return message;
         })
